@@ -1,4 +1,5 @@
-targetElem = document.getElementById("nadpis")
+temp = document.getElementById("temperature")
+description = document.getElementById("description")
 
 async function getForecast() {
     let latitude = 48.920507;
@@ -18,8 +19,11 @@ async function updateForecast() {
     } catch (e) {
         data = "fucking snowing"
     }
+    console.log(data)
     let teplota = Math.round(data.main.temp)
-    targetElem.innerText = "V Plenkovicích je právě " + teplota + "°C"; 
+    let popis = data.weather[0].description
+    temp.innerText = teplota + "°C";
+    description.innerText = popis
 }
 
 updateForecast()

@@ -1,5 +1,7 @@
 temp = document.getElementById("temperature")
 description = document.getElementById("description")
+wind = document.getElementById("wind")
+
 
 async function getForecast() {
     let latitude = 48.920507;
@@ -22,8 +24,10 @@ async function updateForecast() {
     console.log(data)
     let teplota = Math.round(data.main.temp)
     let popis = data.weather[0].description
+    let vitr = data.wind.speed
     temp.innerText = teplota + "°C";
     description.innerText = popis
+    wind.innerText = "Vítr: " + vitr + " m/s"
 }
 
 updateForecast()
